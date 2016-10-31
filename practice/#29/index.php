@@ -16,7 +16,6 @@ function bubbleSort($values) {
                 $values[$i] = $values[$i + 1];
                 $values[$i + 1] = $c;
                 $swapped = true;
-                $order[$i] = $i;
             }
             ++$i;
         }
@@ -25,13 +24,14 @@ function bubbleSort($values) {
         }
     }
     return [
-        'keyOrder' => $order,
         'values' => $values
     ];
 }
 
 $array = bubbleSort($values);
-$preSort = $array['keyOrder'];
+$flipped = array_flip($values);
 $sorted = $array['values'];
 
-var_dump($values,$sorted,$preSort);
+for ($k = 0; $k<$size; $k++) {
+    echo $flipped[$sorted[$k]]+1 . " ";
+}
